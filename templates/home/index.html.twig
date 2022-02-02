@@ -5,29 +5,9 @@
 {% block body %}
 
 <div class="example-wrapper">
-    <h2>Mes dernierères BD ajoutées</h2>
-    <div>
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-        </div>
-            </div>
-        </div>
+    <h2 class="border-dark text-center">Mes dernierères BD ajoutées</h2>
+    {% include 'components/lastAdd.html.twig'%}
+    <h2 class="text-center border-top">Derniers ajouts WishList</h2>
+{% include 'components/lastAddWishlist.html.twig' %}
     </div>
-</div>
 {% endblock %}
