@@ -24,6 +24,11 @@ class Genre
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $test;
+
     public function __construct()
     {
         $this->name = new ArrayCollection();
@@ -60,6 +65,18 @@ class Genre
                 $name->setGenre(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTest(): ?string
+    {
+        return $this->test;
+    }
+
+    public function setTest(?string $test): self
+    {
+        $this->test = $test;
 
         return $this;
     }
