@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BdCollection;
 use App\Form\AddBdCollectionType;
+use App\Repository\BdCollectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +18,11 @@ class BdController extends AbstractController
     /**
      * @Route("/collection", name="collection")
      */
-    public function index(): Response
+    public function index(BdCollectionRepository $bdCollectionRepository): Response
     {
+        $bdCollection= $bdCollectionRepository->findAll();
         return $this->render('bd/index.html.twig', [
-            'controller_name' => 'BdController',
+            "bdCollections" => $bdCollection,
         ]);
     }
 /**
@@ -29,7 +31,7 @@ class BdController extends AbstractController
     public function addBdCollection(\Symfony\Component\HttpFoundation\Request $request)
     {
         $bdCollection = new BdCollection();
-        $form = $this->createForm(AddBdCollectionType::class);
+        $form = $this->createForm(AddBdCollectionType::class,$bdCollection);
         $form->handleRequest($request);
         $this->redirectToRoute('bd_add');
         if ($form->isSubmitted()) {
@@ -37,7 +39,8 @@ class BdController extends AbstractController
             $entityManager->persist($bdCollection);
             $entityManager->flush();
             $this->addFlash('success', 'Votre BD a bien été ajoutée');
-            return $this->redirectToRoute('bd_');
+
+            return $this->redirectToRoute('bd_collection');
         }
         return $this->render('bd/add_bd.html.twig', [
             "form" => $form->createView(),
