@@ -2,12 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\BdCollection;
-use App\Entity\Genre;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\BdColec;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Date;
 
 class AddBdCollectionType extends AbstractType
 {
@@ -16,18 +15,17 @@ class AddBdCollectionType extends AbstractType
         $builder
             ->add('title')
             ->add('edition')
+            ->add('Tome')
             ->add('image')
-            ->add('nbTome')
-            ->add('genre', EntityType::class, [
-                'class' => Genre::class])
-            ->add('users')
+            ->add('genres')
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => BdCollection::class,
+            'data_class' => BdColec::class,
         ]);
     }
 }

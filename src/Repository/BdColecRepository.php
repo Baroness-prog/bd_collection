@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\BdCollection;
+use App\Entity\BdColec;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method BdCollection|null find($id, $lockMode = null, $lockVersion = null)
- * @method BdCollection|null findOneBy(array $criteria, array $orderBy = null)
- * @method BdCollection[]    findAll()
- * @method BdCollection[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method BdColec|null find($id, $lockMode = null, $lockVersion = null)
+ * @method BdColec|null findOneBy(array $criteria, array $orderBy = null)
+ * @method BdColec[]    findAll()
+ * @method BdColec[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BdCollectionRepository extends ServiceEntityRepository
+class BdColecRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, BdCollection::class);
+        parent::__construct($registry, BdColec::class);
     }
 
     // /**
-    //  * @return BdCollection[] Returns an array of BdCollection objects
+    //  * @return BdColec[] Returns an array of BdColec objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class BdCollectionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?BdCollection
+    public function findOneBySomeField($value): ?BdColec
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')
