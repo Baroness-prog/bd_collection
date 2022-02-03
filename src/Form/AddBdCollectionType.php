@@ -24,7 +24,7 @@ class AddBdCollectionType extends AbstractType
                 'choice_name' => 'name',
                 'class' => Genres::class
             ])
-            ->add('add_at',HiddenType::class)
+
 
         ;
     }
