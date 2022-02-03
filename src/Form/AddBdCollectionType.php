@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\BdColec;
+use App\Entity\Genres;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Date;
@@ -17,7 +20,11 @@ class AddBdCollectionType extends AbstractType
             ->add('edition')
             ->add('Tome')
             ->add('image')
-            ->add('genres')
+            ->add('genres',EntityType::class,[
+                'choice_name' => 'name',
+                'class' => Genres::class
+            ])
+            ->add('add_at',HiddenType::class)
 
         ;
     }

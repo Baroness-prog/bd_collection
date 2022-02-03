@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BdColecRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=BdColecRepository::class)
@@ -47,7 +48,10 @@ class BdColec
      */
     private $add_at;
 
-
+    //public function __construct(Date $date)
+//{
+  //  $this->add_at = new \Date('now');
+//}
 
     public function getId(): ?int
     {
@@ -123,7 +127,7 @@ class BdColec
     {
         $this->add_at = $add_at;
 
-        return $this;
+        return $this->setAddAt('now');
     }
 
 }

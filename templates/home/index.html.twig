@@ -6,8 +6,24 @@
 
 <div class="example-wrapper">
     <h2 class="border-dark text-center">Mes dernierères BD ajoutées</h2>
-    {% include 'components/lastAdd.html.twig'%}
+    {% for bdcolec in bdcolecs%}
+    <div class="card-group">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bdcolec.title }}</h5>
+                        <img class="w-50" src="{{ bdcolec.image }}" alt="">
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
     <h2 class="text-center border-top">Derniers ajouts WishList</h2>
 {% include 'components/lastAddWishlist.html.twig' %}
+
     </div>
+
 {% endblock %}

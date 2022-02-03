@@ -34,11 +34,18 @@ class Genres
      */
     private $wishlist;
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function __construct()
     {
         $this->bd = new ArrayCollection();
         $this->wishlist = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {

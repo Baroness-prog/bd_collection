@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\BdColec;
+use App\Entity\Genres;
 use App\Form\AddBdCollectionType;
 use App\Repository\BdColecRepository;
-use App\Repository\BdCollectionRepository;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,6 +47,28 @@ class BdController extends AbstractController
         }
         return $this->render('bd/add_bd.html.twig', [
             "form" => $form->createView(),
+        ]);
+    }
+
+ /**
+  * @Route ("/genre/{genres}" , name="genre" )
+  */
+    public function BdByGenres (
+        ManagerRegistry $managerRegistry,
+        BdColecRepository $bdColecRepository,
+        Request $request,
+        Genres $genres)
+    {
+        $bdColecRepository=$managerRegistry->getRepository(BdColec::class);
+        $genres = $managerRegistry->getRepository(Genres::class);
+        $genres = $request->get('name') ? $request->get('name') : '' ;
+        $bds = [];
+        if ($genres) {
+            $bds = $bdColecRepository->findBy(['genre', $genres]);
+        }
+        return $this->render('bd/genre.html.twig',[
+            'bds'=> $bds,
+            'genres' => $managerRegistry->findAll()
         ]);
     }
 }
