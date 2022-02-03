@@ -9,7 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Voici ta wishlist ✅</h1>
+    <h1 class="text-center">Voici ta wishlist ✅</h1>
+    <a class="alert-danger text-center" href="{{ path('wishlist_add') }}"> Ajouter</a>
 
     {% for wishlist in wishlists %}
      <ul class="list-group list-group-flush">
