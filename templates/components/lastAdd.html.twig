@@ -1,13 +1,22 @@
-<div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card">
+
+    <div class="card-group">
+        {% for bdcolec in bdcolecs %}
+            <div class="card" style="width: 30%">
+                <img src="{{ bdcolec.image }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{ bdcolec.title }}</h5>
+                    <li class="card-text">
+                        Edition : {{ bdcolec.edition }}
+                    </li>
+                    <li class="card-text">
+                        Tome : {{ bdcolec.tome }}
+                    </li>
+                    <li class="card-text">
+                        Genre : {{ bdcolec.genres.name }}
+                    </li>
+
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
-</div>
