@@ -43,10 +43,7 @@ class BdColec
      */
     private $genres;
 
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
-    private $add_at;
+
 
     //public function __construct(Date $date)
 //{
@@ -118,16 +115,5 @@ class BdColec
         return $this;
     }
 
-    public function getAddAt(): ?\DateTimeImmutable
-    {
-        return $this->add_at;
-    }
-
-    public function setAddAt(\DateTimeImmutable $add_at): self
-    {
-        $this->add_at = $add_at;
-
-        return $this->setAddAt('now');
-    }
 
 }
