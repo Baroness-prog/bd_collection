@@ -15,8 +15,10 @@
     {% for wishlist in wishlists %}
      <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ wishlist.title }}  - Tome : {{ wishlist.tome }}  - {{ wishlist.genre }}
+                <img  class="image_wish" data-isbn={{ wishlist.image}}  src="https://covers.openlibrary.org/b/isbn/{{ wishlist.image }}.jpg" alt="">
             </li>
     </ul>
     {% endfor %}
 </div>
+    <script src="/js/booksearch.js"></script>
 {% endblock %}

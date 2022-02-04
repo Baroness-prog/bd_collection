@@ -19,8 +19,9 @@ class OpenlibrarySelector
         $cleanTitle = (str_replace(" ","+",$title));
         $response = $this->client->request(
             'GET',
-            'http://openlibrary.org/search.json?q=' .$cleanTitle
+            'http://openlibrary.org/search.json?title=' .$cleanTitle
         );
-        return $response->toArray()['q'];
+
+        return $response->toArray()['docs'][0]['title_suggest'];
     }
 }

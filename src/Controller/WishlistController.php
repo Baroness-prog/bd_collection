@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Wishlist;
 use App\Form\WhishlistType;
 use App\Repository\WishlistRepository;
+use App\service\CoverSelector;
 use App\service\OpenlibrarySelector;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -57,5 +58,13 @@ class WishlistController extends AbstractController
         return $this->render('wishlist/create_wishlist.html.twig', [
             "form" => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/cover/{cover}", name="cover")
+     */
+    public function cover(CoverSelector $coverSelector, string $cover): Response
+    {
+        $cover = $coverSelector->generateCover($cover);
+        return new JsonResponse($cover);
     }
 }
