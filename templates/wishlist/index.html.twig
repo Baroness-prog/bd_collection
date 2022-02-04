@@ -13,11 +13,21 @@
     <a class="alert-danger text-center" href="{{ path('wishlist_add') }}"> Ajouter</a>
 
     {% for wishlist in wishlists %}
-     <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ wishlist.title }}  - Tome : {{ wishlist.tome }}  - {{ wishlist.genre }}
-                <img  class="image_wish" data-isbn={{ wishlist.image}}  src="https://covers.openlibrary.org/b/isbn/{{ wishlist.image }}.jpg" alt="">
-            </li>
-    </ul>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img class="img-fluid rounded-start image_wish" data-isbn={{ wishlist.image}}  src="https://covers.openlibrary.org/b/isbn/{{ wishlist.image }}.jpg" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ wishlist.title }}</h5>
+                        <p class="card-text">Tome : {{ wishlist.tome }}  - {{ wishlist.genre }}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     {% endfor %}
 </div>
     <script src="/js/booksearch.js"></script>
